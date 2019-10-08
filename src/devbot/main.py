@@ -3,6 +3,7 @@ import random
 
 from aiogram import Bot, Dispatcher, executor, types
 
+from decouple import config #carregar arquivo .env
 
 def run_bot(dp):
     @dp.message_handler()
@@ -29,7 +30,7 @@ def get_random_response():
 
 
 if __name__ == '__main__':
-    API_TOKEN = 'API TOKEN HERE'
+    API_TOKEN = config('API_TOKEN')
     logging.basicConfig(level=logging.INFO)
     bot = Bot(token=API_TOKEN)
     dp = Dispatcher(bot)
