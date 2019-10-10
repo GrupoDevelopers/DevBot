@@ -1,10 +1,10 @@
 # 1 Uma rápida descrição sobre o "DevBot"
 
-O seguinte projeto tem como finalidade de criar um *Bot de Gameficação* para o Telegram, onde terá um sistema de EXP, Ranks, Reputações dos Membros, etc.
+O seguinte projeto tem como finalidade de criar um *Bot de Gameficação* para o [Telegram](https://telegram.org/), onde terá um sistema de EXP, Ranks, Reputações dos Membros, etc.
 
 # 2 Parte Técnica
 
-O "[DevBot](https://github.com/GrupoDevelopers/DevBot)" está sendo programado em *Python 3.7* utilizando a biblioteca [AIOGram](https://aiogram.readthedocs.io/en/latest/) uma [API de construção de Bot do Telegram](https://core.telegram.org/bots/api). Assim com *[Pyscaffold](https://pyscaffold.org/en/latest/)*, *Git* e *Git Flow*.
+O "[DevBot](https://github.com/GrupoDevelopers/DevBot)" está sendo programado em *Python 3.7* utilizando a biblioteca [AIOGram](https://aiogram.readthedocs.io/en/latest/) uma [API de construção de Bot do Telegram](https://core.telegram.org/bots/api). Assim como *[Pyscaffold](https://pyscaffold.org/en/latest/)*, *Git* e *Git Flow*.
 
 ## 2.1 Instalação dos Pre-requisitos
 
@@ -31,25 +31,27 @@ No Linux, execute o seguinte comando para instalar os componentes necessários:
 
 ## 2.2 Executando
 
-A seguir as devidas instalações dos componentes básicos do projeto, e baixado o *[projeto](https://github.com/GrupoDevelopers/DevBot)* pelo *GitHub*, a execução do Bot seguirá da seguinte forma:
+A seguir as devidas instalações dos componentes básicos, e baixado o *[projeto](https://github.com/GrupoDevelopers/DevBot)* pelo *GitHub*, a execução do Bot seguirá da seguinte forma:
 
      1- Crie um bot pelo @BotFather;
      
      2- Encontre o *token* do bot que você acabou de criar;
      
-     3- Atribua o *token* como valor na variável *API_TOKEN* do arquivo python *DevBot/src/devbot/main.py*;
+     3- Atribua o *token* como valor na variável *API_TOKEN* do arquivo *DevBot/.env*;
      
-     4- Execute o script;
+     4- Execute o script *DevBot/src/devbot/main.py*;
      
-     5- Envie o password pelo chat do Bot que você criou e espere o resultado.
+     5- Escreva e envie, somente a palavra, devbot* pelo chat do Bot que você criou e espere o resultado.
      
-No atual estado do Bot, ele está somente respondendo de forma a aleatória após receber o password.
+*\* Não é case-sensitive, ou seja, não é sensível a maiúsculas e minúsculas.*
+
+No atual estado do Bot, ele está somente respondendo de forma aleatória.
 
 # 3 Funcionamento do Projeto
 
 Aqui está uma rápida descrição para o desenvolvimento e prosseguimento do projeto nos seguintes ambientes.
 
-## 3.1 Funcionamento do Projeto no Trello
+## 3.1 no Trello
 
 As criações de novas *Tarefas* vão ser feitas pelo ADM do projeto, para não causar confusões sobre o desenvolvimento e fluxo do projeto.
 
@@ -61,13 +63,12 @@ Logo após o término da tarefa, mude o seu status novamente agora para *DONE*, 
 
 Tente manter uma descrição concisa e coerente da sua tarefa.
 
-## 3.2 Funcionamento do Projeto no GitHub
+## 3.2 no GitHub
 
-...
+Lei sobre na [Documentação](https://docs.google.com/document/d/1DVZ_7xSwBKXlbptykHyIb9Iu_6bCf0uwx3Xvv5t8Ork) do projeto.
 
 # 4 Contribuições
 
-Primeiramente, o projeto tem o objetivo, além do supracitado, construir novas habilidades e experiências, desconsiderando o nível que cada um já possui. Pois, muitos podem já ter mais experiências que outros, que é obvio, mas estamos aqui para aprender.
+Primeiramente, o projeto tem o objetivo, além do supracitado, construir novas habilidades e experiências, desconsiderando o nível que cada um já possui. Pois, muitos podem já ter mais experiências que outros, que é óbvio, mas estamos aqui para aprender.
 
-Seria útil para todos nós o compartilhamento de conhecimento e paciência com alguns k.
-...
+Seria útil para todos nós o compartilhamento de conhecimento e possuir paciência com todos, por exemplo, explicações, dicas ou, simplesmente, indicações de conteúdos, para quem ainda não conseguiu compreender alguma parte do projeto ou conteúdo. Desta forma, manter um ambiente saudável e possibilitar que nós alcancemos nossos objetivos, em geral.
