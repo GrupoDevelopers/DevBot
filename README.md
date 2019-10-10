@@ -65,7 +65,7 @@ Tente manter uma descrição concisa e coerente da sua tarefa.
 
 ## 3.2 no GitHub
 
-Lei sobre na [Documentação](https://docs.google.com/document/d/1DVZ_7xSwBKXlbptykHyIb9Iu_6bCf0uwx3Xvv5t8Ork) do projeto.
+Leia sobre na [Documentação](https://docs.google.com/document/d/1DVZ_7xSwBKXlbptykHyIb9Iu_6bCf0uwx3Xvv5t8Ork) do projeto.
 
 # 4 Contribuições
 
