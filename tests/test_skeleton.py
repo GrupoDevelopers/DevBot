@@ -3,9 +3,9 @@
 import pytest
 from devbot.skeleton import fib
 
-__author__ = "Mike Douglas Oliveira Coelho"
-__copyright__ = "Mike Douglas Oliveira Coelho"
-__license__ = "mit"
+__author__ = "GrupoDevelopers"
+__copyright__ = "GrupoDevelopers"
+__license__ = "gpl3"
 
 
 def test_fib():
