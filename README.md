@@ -4,44 +4,33 @@ O seguinte projeto tem como finalidade de criar um *Bot de Gameficação* para o
 
 # 2 Parte Técnica
 
-O "[DevBot](https://github.com/GrupoDevelopers/DevBot)" está sendo programado em *Python 3.7* utilizando a biblioteca [AIOGram](https://aiogram.readthedocs.io/en/latest/) uma [API de construção de Bot do Telegram](https://core.telegram.org/bots/api). Assim como *[Pyscaffold](https://pyscaffold.org/en/latest/)*, *Git* e *Git Flow*.
+O "[DevBot](https://github.com/GrupoDevelopers/DevBot)" está sendo programado em *Python 3.7* utilizando a biblioteca [AIOGram](https://aiogram.readthedocs.io/en/latest/) uma [API de construção de Bot do Telegram](https://core.telegram.org/bots/api). Assim como *[Pyscaffold](https://pyscaffold.org/en/latest/)*, *[mysqlclient](https://mysqlclient.readthedocs.io/)*, *Git* e *Git Flow*.
 
 ## 2.1 Instalação dos Pre-requisitos
+Requisitos: 
+     - Python 3.7
+     - Mysql
 
 No Linux, execute o seguinte comando para instalar os componentes necessários:
 
      pip3 install -r requirements.txt
 
-<!---Processos para a instalação dos pacotes, caso algum erro aconteçar durante as instalações pelo requirements.txt:
-
-     apt install python3.7
-
-     sudo apt install python3-pip
-
-     python3.7 -m pip install pip
-
-     pip3.7 install idna==2.8
-
-     pip3.7 install yarl==1.3.0
-
-     pip3.7 install aiohttp==3.6.1
-
-     pip3.7 install aiogram==2.3
--->
 
 ## 2.2 Executando
 
-A seguir as devidas instalações dos componentes básicos, e baixado o *[projeto](https://github.com/GrupoDevelopers/DevBot)* pelo *GitHub*, a execução do Bot seguirá da seguinte forma:
+Para a execução deste código você precisará criar um bot no Telegram, então após seguir os passos acima, a execução do Bot seguirá da seguinte forma:
 
-     1- Crie um bot pelo @BotFather;
+     1. Crie um bot pelo @BotFather ([criando um bot em 10 passos](https://medium.com/tht-things-hackers-team/10-passos-para-se-criar-um-bot-no-telegram-3c1848e404c4));
      
-     2- Encontre o *token* do bot que você acabou de criar;
+     2. Encontre o *token* do bot que você acabou de criar;
      
-     3- Atribua o *token* como valor na variável *API_TOKEN* do arquivo *DevBot/.env*;
+     3. Atribua o *token* como valor na variável *API_TOKEN* do arquivo *DevBot/.env* (Se você ainda não possui o arquivo `.env`, você precisa fazer uma cópia do `.env.example` e renomear para `.env`);
+
+     4. Crie um banco de dados e rode o Script SQL `devbot.sql` para a criação do banco de dados
      
-     4- Execute o script *DevBot/src/devbot/main.py*;
+     5. Então execute o script *DevBot/src/devbot/main.py*, `$ python3.7 src/devbot/main.py`;
      
-     5- Escreva e envie, somente a palavra, devbot* pelo chat do Bot que você criou e espere o resultado.
+     6. Escreva e envie, somente a palavra, devbot* pelo chat do Bot que você criou e espere o resultado.
      
 *\* Não é case-sensitive, ou seja, não é sensível a maiúsculas e minúsculas.*
 
