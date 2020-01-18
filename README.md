@@ -1,63 +1,41 @@
-# 1 Uma rápida descrição sobre o "DevBot"
+# DevBot
+Este é um projeto criado no [Grupo Developers](https://t.me/devs_brasil) que tem como intuito trazer conhecimento para o grupo e melhorar suas habilidades como desenvolvedores.
+O DevBot tem como premissa ser um bot de gamificação para ser usado em grupos do Telegram, ou seja, ajudará a tornar os grupos mais dinâmicos e ativos, criando ranking, sistema de XP, reputação de membros e etc.
 
-O seguinte projeto tem como finalidade de criar um *Bot de Gameficação* para o [Telegram](https://telegram.org/), onde terá um sistema de EXP, Ranks, Reputações dos Membros, etc.
+<br>
 
-# 2 Parte Técnica
+### 1. Especificações
+O DevBot está sendo programado em *Python 3.7* utilizando a biblioteca [AIOGram](https://aiogram.readthedocs.io/en/latest/), uma biblioteca que facilita a utilização da [API de bots do Telegram](https://core.telegram.org/bots/api). Também utilizamos outras bibliotecas/tecnologias como *[Pyscaffold](https://pyscaffold.org/en/latest/)* e *[mysqlclient](https://mysqlclient.readthedocs.io/)*.
 
-O "[DevBot](https://github.com/GrupoDevelopers/DevBot)" está sendo programado em *Python 3.7* utilizando a biblioteca [AIOGram](https://aiogram.readthedocs.io/en/latest/) uma [API de construção de Bot do Telegram](https://core.telegram.org/bots/api). Assim como *[Pyscaffold](https://pyscaffold.org/en/latest/)*, *[mysqlclient](https://mysqlclient.readthedocs.io/)*, *Git* e *Git Flow*.
+<br>
 
-## 2.1 Instalação dos Pre-requisitos
-Requisitos: 
-     - Python 3.7
-     - Mysql
+### 2. Instalação
+Primeiro deve ser instalado o [Python 3.7](https://www.python.org/downloads/), [PIP](https://pip.pypa.io/en/stable/installing/) (gerenciador de bibliotecas do Python) e o [MySQL](https://www.mysql.com/) respectivo ao seu sistema operacional, após isso será necessário algumas instalações antes de instalar a biblioteca do mysqlclient conforme o [manual de instalação no README do projeto](https://github.com/PyMySQL/mysqlclient-python). Então agora você poderá executar o comando que instalará as bibliotecas Python utilizadas no projeto:
 
-No Linux, execute o seguinte comando para instalar os componentes necessários:
+     $ pip3 install -r requirements.txt
 
-     pip3 install -r requirements.txt
+ou
 
+     $ python3.7 -m pip install -r requirements.txt
 
-## 2.2 Executando
+<br>
 
-Para a execução deste código você precisará criar um bot no Telegram, então após seguir os passos acima, a execução do Bot seguirá da seguinte forma:
+### 3. Executando
+Para a execução deste código você precisará criar um bot no Telegram para fazer os testes, então após seguir os passos acima, a execução do Bot seguirá da seguinte forma:
 
-     1. Crie um bot pelo @BotFather ([criando um bot em 10 passos](https://medium.com/tht-things-hackers-team/10-passos-para-se-criar-um-bot-no-telegram-3c1848e404c4));
-     
-     2. Encontre o *token* do bot que você acabou de criar;
-     
-     3. Atribua o *token* como valor na variável *API_TOKEN* do arquivo *DevBot/.env* (Se você ainda não possui o arquivo `.env`, você precisa fazer uma cópia do `.env.example` e renomear para `.env`);
+1. A criação de bots do Telegram é feita através do @BotFather ([criando um bot em 10 passos](https://medium.com/tht-things-hackers-team/10-passos-para-se-criar-um-bot-no-telegram-3c1848e404c4));
 
-     4. Crie um banco de dados e rode o Script SQL `devbot.sql` para a criação do banco de dados
-     
-     5. Então execute o script *DevBot/src/devbot/main.py*, `$ python3.7 src/devbot/main.py`;
-     
-     6. Escreva e envie, somente a palavra, devbot* pelo chat do Bot que você criou e espere o resultado.
-     
-*\* Não é case-sensitive, ou seja, não é sensível a maiúsculas e minúsculas.*
+2. Atribua o **token** do seu bot (dado pelo @BotFather) como valor na variável **API_TOKEN** do arquivo `DevBot/.env`. *(se você ainda não possui o arquivo `.env`, você precisa fazer uma cópia do `.env.example` e renomear esta cópia para `.env`)*;
 
-No atual estado do Bot, ele está somente respondendo de forma aleatória.
+3. Crie um banco de dados e importe o script SQL `devbot.sql` para a criação da estrutura do banco
 
-# 3 Funcionamento do Projeto
+4. Então execute o script principal: `$ python3.7 src/main.py`;
 
-Aqui está uma rápida descrição para o desenvolvimento e prosseguimento do projeto nos seguintes ambientes.
+5. Abra seu bot de testes e mande pra ele a palavra **devbot**, se ele respondeu... Pronto! Está tudo funcionando!
 
-## 3.1 no Trello
+<br>
 
-As criações de novas *Tarefas* vão ser feitas pelo ADM do projeto, para não causar confusões sobre o desenvolvimento e fluxo do projeto.
+### 4. Como colaborar com o DevBot?
+Este projeto é totalmente dependente do [Grupo Developers](https://t.me/devs_brasil), não é possível colaborar com este projeto sem ao menos participar do grupo privado de discussão sobre o bot, de lá surgem todas as discussões necessárias e decisões tomadas sobre o desenvolvimento do bot. Para ter acesso ao grupo de discussões você precisa primeiramente acessar o [Grupo Developers](https://t.me/devs_brasil) para poder solicitar ser incluído no grupo de discussões. Então após a solicitação aos admins, eles lhe encaminharão toda a documentação e explicação o processo e regras para o desenvolvimento do bot.
 
-As *Tarefas* disponíveis estará com o status *TO DO*. Para entrar em uma tarefa já em progresso entre em contato com os já "*INGRESSADOS*" na tarefa, caso for necessária a ajuda de mais participantes.
-
-Após escolher a tarefa de seu agrado, mude o status da tarefa para *DOING*, caso ainda estiver com status *TO DO*, e clique em *INGRESSAR*, para que outros participantes possam saber quais tarefas já estão sendo feitas e por quantas pessoas, para um melhor gerenciamento.
-
-Logo após o término da tarefa, mude o seu status novamente agora para *DONE*, para que os participantes do projeto possam ficar atualizado do progresso do projeto.
-
-Tente manter uma descrição concisa e coerente da sua tarefa.
-
-## 3.2 no GitHub
-
-Leia sobre na [Documentação](https://docs.google.com/document/d/1DVZ_7xSwBKXlbptykHyIb9Iu_6bCf0uwx3Xvv5t8Ork) do projeto.
-
-# 4 Contribuições
-
-Primeiramente, o projeto tem o objetivo, além do supracitado, construir novas habilidades e experiências, desconsiderando o nível que cada um já possui. Pois, muitos podem já ter mais experiências que outros, que é óbvio, mas estamos aqui para aprender.
-
-Seria útil para todos nós o compartilhamento de conhecimento e possuir paciência com todos, por exemplo, explicações, dicas ou, simplesmente, indicações de conteúdos, para quem ainda não conseguiu compreender alguma parte do projeto ou conteúdo. Desta forma, manter um ambiente saudável e possibilitar que nós alcancemos nossos objetivos, em geral.
+As criações de novas implementações e correções do DevBot são feitas no Trello, através da criação de tarefas, estas tarefas são oriundas de sugestões dos membros do [Grupo Developers](https://t.me/devs_brasil)ou das idéias que surgem no grupo de discussão.
