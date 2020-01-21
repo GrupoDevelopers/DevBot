@@ -23,12 +23,13 @@ class DevBot:
         self.run_bot()
 
     def run_bot(self):
+        @self.dispatcher.message_handler(commands=['exp'])
+        async def exp(message: types.Message):
+            response = self.database.get_experiences(chat_id=message.chat.id)
+            await message.reply(response)
+
         @self.dispatcher.message_handler()
         async def listening(message: types.Message):
             await random_response(message)
             self.database.update(message)
             self.experience.handler(message)
-
-            if '/exp' in message.text.lower():
-                response = self.database.get_experiences(chat_id=message.chat.id)
-                await message.reply(response)
