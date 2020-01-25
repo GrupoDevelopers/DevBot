@@ -56,7 +56,6 @@ class Database():
         if self.cursor.execute(query) == 0:
             return None
         chat_db = self.cursor.fetchone()
-        self.db.close()
         return Chat(
             chat_id=chat_db[1],
             title=chat_db[2],
@@ -69,7 +68,6 @@ class Database():
         if self.cursor.execute(query) == 0:
             return None
         user_db = self.cursor.fetchone()
-        self.db.close()
         return User(
             telegram_id=user_db[1],
             is_bot=user_db[2],
@@ -86,7 +84,6 @@ class Database():
         print(chat.chat_id, chat.title, chat.chat_type)
         self.cursor.execute(query)
         self.db.commit()
-        self.db.close()
 
     def insert_user(self, user):
         self.connect()
@@ -94,7 +91,6 @@ class Database():
                     VALUES ({user.telegram_id}, "{int(user.is_bot)}", "{user.first_name}", "{user.last_name}", "{user.username}");"""
         self.cursor.execute(query)
         self.db.commit()
-        self.db.close()
 
     def find_experience_points(self, user_telegram_id, chat_id):
         self.connect()
@@ -102,7 +98,6 @@ class Database():
         WHERE user_telegram_id = {int(user_telegram_id)} AND chat_id = {int(chat_id)};"""
         self.cursor.execute(query)
         experience_points = self.cursor.fetchone()
-        self.db.close()
         if experience_points:
             return experience_points[0]
         else:
@@ -120,10 +115,8 @@ class Database():
             query = f"""UPDATE experiences SET experience_points = {int(new_experience_points)}
                         WHERE user_telegram_id = {int(user_telegram_id)} AND 
                         chat_id = {int(chat_id)};"""
-
         self.cursor.execute(query)
         self.db.commit()
-        self.db.close()
 
     def get_experiences(self, chat_id, amount=10):
         self.connect()
@@ -146,5 +139,4 @@ class Database():
             username = experience[2]
             experience = experience[3]
             response += f"{first_name} {last_name} ({experience})\n"
-        self.db.close()
         return response
