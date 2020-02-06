@@ -17,11 +17,9 @@ from models.user import User
 
 class Database():
     def __init__(self):
-        db = MySQLdb.connect(passwd=config("DB_PASSWORD"), db=config("DB_NAME"),
-                             user=config("DB_USER"), host=config("DB_HOST"))
         self.messages_controller = MessagesController()
-        self.cursor = db.cursor()
-        self.db = db
+        self.cursor = None
+        self.db = None
         self.chats_saved = []
         self.users_saved = []
 
