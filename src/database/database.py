@@ -17,13 +17,17 @@ from models.user import User
 
 class Database():
     def __init__(self):
-        db = MySQLdb.connect(passwd=config("DB_PASSWORD"), db=config("DB_NAME"),
-                             user=config("DB_USER"), host=config("DB_HOST"))
         self.messages_controller = MessagesController()
-        self.cursor = db.cursor()
-        self.db = db
+        self.cursor = None
+        self.db = None
         self.chats_saved = []
         self.users_saved = []
+
+    def connect(self):
+        db = MySQLdb.connect(passwd=config("DB_PASSWORD"), db=config("DB_NAME"),
+                        user=config("DB_USER"), host=config("DB_HOST"))
+        self.cursor = db.cursor()
+        self.db = db
 
     def update(self, telegram_message):
         chat = extract_chat_object(telegram_message)
@@ -45,6 +49,7 @@ class Database():
             self.users_saved = []
 
     def find_chat(self, chat_id):
+        self.connect()
         query = f"""SELECT * FROM chats WHERE chat_id={chat_id} """
         if self.cursor.execute(query) == 0:
             return None
@@ -56,6 +61,7 @@ class Database():
         )
 
     def find_user(self, telegram_id):
+        self.connect()
         query = f"""SELECT * FROM users WHERE telegram_id={telegram_id} """
         if self.cursor.execute(query) == 0:
             return None
@@ -70,6 +76,7 @@ class Database():
         )
 
     def insert_chat(self, chat):
+        self.connect()
         query = f"""INSERT INTO chats (chat_id, title, chat_type)
                     VALUES ({int(chat.chat_id)}, "{chat.title}", "{chat.chat_type}");"""
         print(chat.chat_id, chat.title, chat.chat_type)
@@ -77,12 +84,14 @@ class Database():
         self.db.commit()
 
     def insert_user(self, user):
+        self.connect()
         query = f"""INSERT INTO users (telegram_id, is_bot, first_name, last_name, username)
                     VALUES ({user.telegram_id}, "{int(user.is_bot)}", "{user.first_name}", "{user.last_name}", "{user.username}");"""
         self.cursor.execute(query)
         self.db.commit()
 
     def find_experience_points(self, user_telegram_id, chat_id):
+        self.connect()
         query = f"""SELECT experience_points FROM experiences 
         WHERE user_telegram_id = {int(user_telegram_id)} AND chat_id = {int(chat_id)};"""
         self.cursor.execute(query)
@@ -93,6 +102,7 @@ class Database():
             return 0
 
     def add_user_experience(self, user_telegram_id, experience, chat_id):
+        self.connect()
         current_experience_points = self.find_experience_points(
             user_telegram_id, chat_id)
         new_experience_points = current_experience_points + experience
@@ -103,11 +113,11 @@ class Database():
             query = f"""UPDATE experiences SET experience_points = {int(new_experience_points)}
                         WHERE user_telegram_id = {int(user_telegram_id)} AND 
                         chat_id = {int(chat_id)};"""
-
         self.cursor.execute(query)
         self.db.commit()
 
     def get_experiences(self, chat_id, amount=10):
+        self.connect()
         query = f"""SELECT u.first_name, u.last_name, u.username, e.experience_points
                     FROM experiences AS e
                     INNER JOIN chats AS c
