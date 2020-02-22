@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `devbot`.`chats` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `chat_id_UNIQUE` (`chat_id` ASC))
 ENGINE = InnoDB
+AUTO_INCREMENT = 7
 DEFAULT CHARACTER SET = latin1;
 
 
@@ -41,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `devbot`.`experiences` (
   `experience_points` INT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = latin1;
 
 
@@ -62,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `devbot`.`tag` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `tag` VARCHAR(255) NOT NULL,
   `approved_by` VARCHAR(45) NULL DEFAULT NULL,
-  `status` VARCHAR(45) NOT NULL DEFAULT 'Aguardando aprovacao',
+  `status` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -80,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `devbot`.`users` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `telegram_id_UNIQUE` (`telegram_id` ASC))
 ENGINE = InnoDB
+AUTO_INCREMENT = 12
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
 
