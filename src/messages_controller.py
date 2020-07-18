@@ -64,7 +64,7 @@ def extract_user_object(telegram_message):
     return User(
         telegram_id=telegram_message['from'].id,
         first_name=telegram_message['from'].first_name,
-        last_name=telegram_message['from'].last_name,
-        username=telegram_message['from'].username,
+        last_name=telegram_message['from'].last_name or '',
+        username=telegram_message['from'].username or '',
         is_bot=telegram_message['from'].is_bot
     )
