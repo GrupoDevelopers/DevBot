@@ -27,7 +27,7 @@ Para a execução deste código você precisará criar um bot no Telegram para f
 
 2. Atribua o **token** do seu bot (dado pelo @BotFather) como valor na variável **API_TOKEN** do arquivo `DevBot/.env`. *(se você ainda não possui o arquivo `.env`, você precisa fazer uma cópia do `.env.example` e renomear esta cópia para `.env`)*;
 
-3. Crie um banco de dados e importe o script SQL `devbot.sql` para a criação da estrutura do banco
+3. Crie um banco de dados e importe o script SQL `devbot.sql` para a criação da estrutura do banco. Preencha o arquivo `.env` com os dados do banco criado.
 
 4. Então execute o script principal: `$ python3.7 src/main.py`;
 
