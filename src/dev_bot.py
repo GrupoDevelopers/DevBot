@@ -25,9 +25,17 @@ class DevBot:
         self.run_bot()
 
     def run_bot(self):
+        async def expname(chatid, userid):
+            member = await bot.get_chat_member(chat_id=str(chatid), user_id=str(userid))
+            return member['user']['first_name']
+            
         @self.dispatcher.message_handler(commands=['exp'])
         async def exp(message: types.Message):
-            response = self.database.get_experiences(chat_id=message.chat.id)
+            experiences_db = self.database.get_experiences(chat_id=message.chat.id)
+            response = "Experiências:\n\n"
+            for experience in experiences_db:
+                re = await expname(experience[1], experience[0])
+                response += f"{re} ({experience[2]})\n"
             await message.reply(response)
 
         @self.dispatcher.message_handler()
