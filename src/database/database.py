@@ -35,8 +35,6 @@ class Database():
 
         if not self.find_chat(chat.chat_id):
             self.insert_chat(chat)
-        if not self.find_chat(chat.chat_id):
-            self.insert_chat(chat)
 
         if not self.find_user(user.telegram_id):
             self.insert_user(user)
