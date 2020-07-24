@@ -23,8 +23,6 @@ USE `devbot` ;
 CREATE TABLE IF NOT EXISTS `devbot`.`chats` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `chat_id` BIGINT NULL DEFAULT NULL,
-  `title` VARCHAR(255) NOT NULL,
-  `chat_type` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `chat_id_UNIQUE` (`chat_id` ASC))
 ENGINE = InnoDB
@@ -75,10 +73,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `devbot`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `telegram_id` BIGINT NULL DEFAULT NULL,
-  `is_bot` INT NOT NULL,
-  `first_name` VARCHAR(255) CHARACTER SET 'utf8' NOT NULL,
-  `last_name` VARCHAR(255) CHARACTER SET 'utf8' NOT NULL,
-  `username` VARCHAR(255) CHARACTER SET 'utf8' NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `telegram_id_UNIQUE` (`telegram_id` ASC))
 ENGINE = InnoDB
