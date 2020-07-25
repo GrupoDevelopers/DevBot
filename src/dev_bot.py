@@ -33,9 +33,9 @@ class DevBot:
         async def exp(message: types.Message):
             experiences_db = self.database.get_experiences(chat_id=message.chat.id)
             response = "Experiências:\n\n"
-            for experience in experiences_db:
-                re = await check_name_member(experience[1], experience[0])
-                response += f"{re} ({experience[2]})\n"
+            for member_data in experiences_db:
+                re = await check_name_member(member_data[1], member_data[0])
+                response += f"{re} ({member_data[2]})\n"
             await message.reply(response)
 
         @self.dispatcher.message_handler()
