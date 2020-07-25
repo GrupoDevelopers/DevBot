@@ -33,13 +33,13 @@ class Database():
         chat = extract_chat_object(telegram_message)
         user = extract_user_object(telegram_message)
 
-        if not self.find_chat(chat.chat_id):
+        if not self.chat_exists(chat.chat_id):
             self.insert_chat(chat)
 
-        if not self.find_user(user.telegram_id):
+        if not self.user_exists(user.telegram_id):
             self.insert_user(user)
 
-    def find_chat(self, chat_id):
+    def chat_exists(self, chat_id):
         self.db.ping(True)
         query = f"""SELECT * FROM chats WHERE chat_id={chat_id} """
         if self.cursor.execute(query) == 0:
@@ -47,7 +47,7 @@ class Database():
         chat_db = self.cursor.fetchone()
         return True
 
-    def find_user(self, telegram_id):
+    def user_exists(self, telegram_id):
         self.db.ping(True)
         query = f"""SELECT * FROM users WHERE telegram_id={telegram_id} """
         if self.cursor.execute(query) == 0:
