@@ -25,7 +25,7 @@ class DevBot:
         self.run_bot()
 
     def run_bot(self):
-        async def expname(chatid, userid):
+        async def check_name_member(chatid, userid):
             member = await bot.get_chat_member(chat_id=str(chatid), user_id=str(userid))
             return member['user']['first_name']
             
@@ -34,7 +34,7 @@ class DevBot:
             experiences_db = self.database.get_experiences(chat_id=message.chat.id)
             response = "Experiências:\n\n"
             for experience in experiences_db:
-                re = await expname(experience[1], experience[0])
+                re = await check_name_member(experience[1], experience[0])
                 response += f"{re} ({experience[2]})\n"
             await message.reply(response)
 
