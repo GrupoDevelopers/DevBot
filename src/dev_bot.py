@@ -27,15 +27,17 @@ class DevBot:
     def run_bot(self):
         async def check_name_member(chatid, userid):
             member = await bot.get_chat_member(chat_id=str(chatid), user_id=str(userid))
-            return member['user']['first_name']
+            name_member = member['user']['first_name']
+            if ("last_name" in member['user']): name_member += member['user']['last_name']
+            return name_member
             
         @self.dispatcher.message_handler(commands=['exp'])
         async def exp(message: types.Message):
             experiences_db = self.database.get_experiences(chat_id=message.chat.id)
             response = "Experiências:\n\n"
             for member_data in experiences_db:
-                re = await check_name_member(member_data[1], member_data[0])
-                response += f"{re} ({member_data[2]})\n"
+                name_member_data = await check_name_member(member_data[1], member_data[0])
+                response += f"{name_member_data} ({member_data[2]})\n"
             await message.reply(response)
 
         @self.dispatcher.message_handler()
