@@ -34,10 +34,11 @@ class DevBot:
         @self.dispatcher.message_handler(commands=['exp'])
         async def exp(message: types.Message):
             experiences_db = self.database.get_experiences(chat_id=message.chat.id)
-            response = "Experiências:\n\n"
-            for member_data in experiences_db:
-                name_member_data = await check_name_member(member_data[1], member_data[0])
-                response += f"{name_member_data} ({member_data[2]})\n"
+            response, cont = "Experiências:\n\n", 0
+            for item in experiences_db:
+                name_member_data = await check_name_member(experiences_db[cont]['chat_id'], experiences_db[cont]['telegram_id'])
+                response += f"{name_member_data} ({experiences_db[cont]['experience_points']})\n"
+                cont = cont + 1
             await message.reply(response)
 
         @self.dispatcher.message_handler()

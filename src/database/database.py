@@ -108,5 +108,7 @@ class Database():
                     ORDER BY e.experience_points DESC
                     LIMIT {amount}"""
         self.cursor.execute(query)
-        experiences_db = self.cursor.fetchall()
-        return experiences_db
+        experience_data, experiences_db = [], self.cursor.fetchall()
+        for item in experiences_db:
+            experience_data.append({"telegram_id":item[0], "chat_id":item[1], "experience_points":item[2]})
+        return experience_data
