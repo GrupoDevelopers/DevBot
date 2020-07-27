@@ -8,14 +8,11 @@
 
 import logging
 
-from aiogram import Bot, Dispatcher, executor, types
-from decouple import config
-from dev_bot import DevBot
+from aiogram import Dispatcher, executor, types
+from dev_bot import DevBot, bot
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
-    API_TOKEN = config('API_TOKEN')
-    bot = Bot(token=API_TOKEN)
     dp = Dispatcher(bot)
     main = DevBot(dp)
     executor.start_polling(dp, skip_updates=True)
