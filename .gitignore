@@ -51,3 +51,5 @@ MANIFEST
 env/
 *.env
 .vscode/
+*.suo
+/.vs
