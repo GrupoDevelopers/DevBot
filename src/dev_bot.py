@@ -33,7 +33,7 @@ class DevBot:
             
         @self.dispatcher.message_handler(commands=['exp'])
         async def exp(message: types.Message):
-            experiences_db = self.database.get_experiences(chat_id=message.chat.id)
+            experiences_db = await self.database.get_experiences(chat_id=message.chat.id)
             response, cont = "Experiências:\n\n", 0
             for item in experiences_db:
                 name_member_data = await check_name_member(experiences_db[cont]['chat_id'], experiences_db[cont]['telegram_id'])
@@ -44,5 +44,5 @@ class DevBot:
         @self.dispatcher.message_handler()
         async def listening(message: types.Message):
             await random_response(message)
-            self.database.update(message)
-            self.experience.handler(message)
+            await self.database.update(message)
+            await self.experience.handler(message)
