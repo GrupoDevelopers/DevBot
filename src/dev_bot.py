@@ -47,5 +47,6 @@ class DevBot:
         @self.dispatcher.message_handler()
         async def listening(message: types.Message):
             await random_response(message)
-            await self.database.update(message)
-            await self.experience.handler(message)
+            if (message.chat.type != "private"):
+                await self.database.update(message)
+                await self.experience.handler(message)
