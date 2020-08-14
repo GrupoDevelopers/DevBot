@@ -26,10 +26,13 @@ class DevBot:
 
     def run_bot(self):
         async def check_name_member(chatid, userid):
-            member = await bot.get_chat_member(chat_id=str(chatid), user_id=str(userid))
-            name_member = member['user']['first_name']
-            if ("last_name" in member['user']): name_member += member['user']['last_name']
-            return name_member
+            try:
+                member = await bot.get_chat_member(chat_id=str(chatid), user_id=str(userid))
+                name_member = member['user']['first_name']
+                if ("last_name" in member['user']): f"{name_member} {member['user']['last_name']}"
+                return name_member
+            except:
+                return "Conta Excluida"
             
         @self.dispatcher.message_handler(commands=['exp'])
         async def exp(message: types.Message):
