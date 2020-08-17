@@ -131,3 +131,12 @@ class Database():
             experience = experience[3]
             response += f"{first_name} {last_name} ({experience})\n"
         return response
+
+    def get_user_level(self, user_telegram_id, chat_id):
+        experience_points = self.find_experience_points(user_telegram_id = user_telegram_id, chat_id = chat_id)
+        user_level = 0
+        level_requirement = 0
+        while experience_points > level_requirement:
+            user_level += 1
+            level_requirement = round((user_level ** 2) - user_level + 15 + level_requirement)
+        return user_level
