@@ -56,7 +56,7 @@ def extract_chat_object(telegram_message):
         chat_id=telegram_message.chat.id,
         chat_type=telegram_message.chat.type,
         title=telegram_message.chat.title if hasattr(
-            telegram_message, 'title') else ""
+            telegram_message.chat, 'title') else ""
     )
 
 

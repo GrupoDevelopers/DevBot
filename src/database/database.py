@@ -53,12 +53,12 @@ class Database():
     async def insert_chat(self, chat):
         self.ping
         self.cursor.execute(f"INSERT INTO chats (chat_id) VALUES ({int(chat.chat_id)});")
-        await self.db.commit()
+        self.db.commit()
 
     async def insert_user(self, user):
         self.ping
         self.cursor.execute(f"INSERT INTO users (telegram_id) VALUES ({user.telegram_id});")
-        await self.db.commit()
+        self.db.commit()
 
     async def find_experience_points(self, user_telegram_id, chat_id):
         self.ping
