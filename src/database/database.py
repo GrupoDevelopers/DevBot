@@ -140,3 +140,4 @@ class Database():
             user_level += 1
             level_requirement = round((user_level ** 2) - user_level + 15 + level_requirement)
         return user_level
+        
