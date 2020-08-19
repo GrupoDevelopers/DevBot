@@ -29,7 +29,7 @@ class DevBot:
             try:
                 member = await bot.get_chat_member(chat_id=str(chatid), user_id=str(userid))
                 name_member = member['user']['first_name']
-                if ("last_name" in member['user']): f"{name_member} {member['user']['last_name']}"
+                if ("last_name" in member['user']): name_member = f"{name_member} {member['user']['last_name']}"
                 return name_member
             except:
                 return "Conta Excluida"
