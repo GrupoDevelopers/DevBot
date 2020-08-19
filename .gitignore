@@ -50,4 +50,8 @@ MANIFEST
 .venv*/
 env/
 *.env
+
+# Visual Studio generated files
 .vscode/
+*.suo
+.vs/
