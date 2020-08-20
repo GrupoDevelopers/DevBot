@@ -6,19 +6,18 @@
 #                                                                       #
 #########################################################################
 
-MAX_MESSAGES = 10
-
 class Experience:
     def __init__(self, database):
         from messages_controller import MessagesController
         self.messages_controller = MessagesController()
         self.database = database
+        self.MAX_MESSAGES = 10
 
     async def handler(self, telegram_message):
         self.messages_controller.add(telegram_message)
         chats = self.messages_controller.chats
         for chat in chats:
-            if (len(chat.messages) > MAX_MESSAGES):
+            if (len(chat.messages) > self.MAX_MESSAGES):
                 await self.distribute_experience_points(chat)
                 self.messages_controller.autoclear()
 
