@@ -42,7 +42,7 @@ class DevBot:
             for item in experiences_db:
                 name_member_data = await check_name_member(experiences_db[cont]['chat_id'], experiences_db[cont]['telegram_id'])
                 member_level, level_req = await self.database.get_user_level(user_telegram_id= experiences_db[cont]['telegram_id'], chat_id= experiences_db[cont]['chat_id'])
-                response += f"{name_member_data} - Nível {member_level} ({experiences_db[cont]['experience_points']}/{level_req})\n"
+                response += f"{name_member_data} - Nível {member_level} ({experiences_db[cont]['experience_points']}/{level_req} XP)\n"
                 cont = cont + 1
             await message.reply(emojize(response))
 
