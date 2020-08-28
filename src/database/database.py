@@ -100,11 +100,12 @@ class Database():
             experience_data.append({"telegram_id":item[0], "chat_id":item[1], "experience_points":item[2]})
         return experience_data
 
-    def get_user_level(self, user_telegram_id, chat_id):
-        experience_points = self.find_experience_points(user_telegram_id = user_telegram_id, chat_id = chat_id)
+    async def get_user_level(self, user_telegram_id, chat_id):
+        self.ping
+        experience_points = await self.find_experience_points(user_telegram_id = user_telegram_id, chat_id = chat_id)
         user_level = 0
         level_requirement = 0
         while experience_points > level_requirement:
             user_level += 1
             level_requirement = round((user_level ** 2) - user_level + 15 + level_requirement)
-        return user_level
+        return user_level, level_requirement

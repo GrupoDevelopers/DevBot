@@ -13,6 +13,7 @@ from aiogram import types, Bot, Dispatcher, executor
 from bot_behaviors.random_responses import random_response
 from bot_behaviors.experience import Experience
 from database.database import Database
+from aiogram.utils.emoji import emojize
 
 from decouple import config
 
@@ -36,13 +37,16 @@ class DevBot:
             
         @self.dispatcher.message_handler(commands=['exp'])
         async def exp(message: types.Message):
-            response, cont = "Experiências:\n\n", 0
+            response, cont = ":trophy: *Ranking de experiência* :trophy:\n\n", 0
             experiences_db = await self.database.get_experiences(chat_id=message.chat.id)
             for item in experiences_db:
                 name_member_data = await check_name_member(experiences_db[cont]['chat_id'], experiences_db[cont]['telegram_id'])
-                response += f"{name_member_data} ({experiences_db[cont]['experience_points']})\n"
+                member_level, level_req = await self.database.get_user_level(user_telegram_id= experiences_db[cont]['telegram_id'], chat_id= experiences_db[cont]['chat_id'])
+                response += f"*{name_member_data}* - Nível {member_level} ({experiences_db[cont]['experience_points']}/{level_req} XP)\n"
                 cont = cont + 1
-            await message.reply(response)
+            last_reset = config('LAST_DB_RESET')
+            response += f'\n_Último reset em {last_reset}_'
+            await message.reply(emojize(response), parse_mode='Markdown')
 
         @self.dispatcher.message_handler()
         async def listening(message: types.Message):
