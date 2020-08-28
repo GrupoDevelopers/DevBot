@@ -97,14 +97,18 @@ class Database():
                     LIMIT {amount}""")
         experience_data, experiences_db = [], self.cursor.fetchall()
         for item in experiences_db:
-            experience_data.append({"telegram_id":item[0], "chat_id":item[1], "experience_points":item[2]})
+            user_level, level_requirement = await self.get_user_level(item[0], item[1])
+            experience_data.append({"telegram_id":item[0], 
+                                "chat_id":item[1],
+                                "experience_points":item[2], 
+                                "level_req":level_requirement, 
+                                "member_level":user_level})
         return experience_data
 
     async def get_user_level(self, user_telegram_id, chat_id):
         self.ping
         experience_points = await self.find_experience_points(user_telegram_id = user_telegram_id, chat_id = chat_id)
-        user_level = 0
-        level_requirement = 0
+        user_level, level_requirement = 0, 0
         while experience_points > level_requirement:
             user_level += 1
             level_requirement = round((user_level ** 2) - user_level + 15 + level_requirement)
