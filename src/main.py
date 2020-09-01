@@ -46,12 +46,24 @@ class DevBot:
             response += f'\n_Último reset em {config("LAST_DB_RESET")}_'
             await message.reply(emojize(response), parse_mode='Markdown')
 
+        @self.dispatcher.message_handler(commands=['me', 'profile'])
+        async def profile(message: types.Message):
+            if (message.chat.type == "private"):
+                return False
+            name = message.from_user.full_name
+            experience_points = await self.database.find_experience_points(user_telegram_id=message.from_user.id, chat_id=message.chat.id)
+            user_level, next_level = await self.database.get_user_level(user_telegram_id=message.from_user.id, chat_id=message.chat.id)
+            response = f":bust_in_silhouette:[{name}](tg://user?id={message.from_user.id})\n"
+            response += f"*Nível*: {user_level}\n*Experiência*: {experience_points if experience_points else 0} / {next_level} XP"
+            await message.reply(emojize(response), parse_mode='Markdown', disable_web_page_preview=True)
+
         @self.dispatcher.message_handler()
         async def listening(message: types.Message):
             await random_response(message)
             if (message.chat.type != "private"):
                 await self.database.update(message)
-                await self.experience.handler(message)																																																																																									
+                await self.experience.handler(message)
+
                 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO,
